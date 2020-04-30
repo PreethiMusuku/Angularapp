@@ -1,0 +1,6 @@
+{
+    "/flights/RegPage": {
+      "target": "http://localhost:9194",
+      "secure": false
+    }
+  }

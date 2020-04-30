@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "flightSprint2"
+    }
+  },
+  "defaultProject": "flightSprint2",
+  "cli": {
+    "analytics": "46f9f685-95d6-4624-8358-fff1d018198e"
+  }
 }

@@ -1,0 +1,50 @@
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<div style="text-align: center">
+
+    <div class="container">
+        <div class="row">
+        <div id="custom-search-input">
+        <div class="input-group col-md-12" style="text-align: center">
+            <input type="text" class="search-query form-control" placeholder="Enter FromLocation"  name="fromloc" [(ngModel)]="fromloc" (input)="Search()"/>
+            <div class="input-group col-md-12" style="text-align: center">
+                <input type="text" class="search-query form-control" placeholder="Enter ToLocation"  name="toloc" [(ngModel)]="toloc" (input)="Searchnow()"/>
+            </div>
+        </div>
+        </div>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="container">
+            <div class="row col-md-6 col-md-offset-2 custyle">
+    <h2>AVAILABLE FLIGHTS</h2>
+    <table class="table table-striped container">
+        <thead>
+            <tr>
+             <th>flightNumber</th>
+              <th>FlightName</th>
+              <th>FromLocation</th>
+              <th>ToLocation</th>
+              <th>NoofSeats</th>
+              <th>Cost</th>
+            </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let u of users">
+            <td>{{u.flightNumber}}</td>
+            <td>{{u.flightName}}</td>
+            <td>{{u.fromloc}}</td>
+            <td>{{u.toloc}}</td>
+            <td>{{u.seatCapacity}}</td>
+            <td>{{u.costPerSeat}}</td>
+            </tr>
+           
+        </tbody>
+    </table>
+
+</div>
+</div>
+    </div>
