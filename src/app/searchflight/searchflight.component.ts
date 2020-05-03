@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Flight, UserFlightService } from '../user-flight.service';
+import {  UserFlightService, Flight } from '../user-flight.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,27 +8,24 @@ import { Router } from '@angular/router';
   styleUrls: ['./searchflight.component.css']
 })
 export class SearchflightComponent implements OnInit {
-
-    users:Flight;
-    fromloc:string;
-    toloc:string;
-    constructor(private service:UserFlightService) { }
-    Search() {
-      this.users=this.users.filter(res=>
-        {
-return res.fromloc.toLocaleLowerCase().match(this.fromloc.toLocaleLowerCase());
-        });
-    }
-    Searchnow() {
-      this.users=this.users.filter(res=>
-        {
-return res.toloc.toLocaleLowerCase().match(this.toloc.toLocaleLowerCase());
-        });
-    }
-    ngOnInit() {
-      console.log(this.users);
-      let resp=this.service.getUsers();
-      resp.subscribe((data)=>this.users=data);
-    }
+searchs: Flight[];
+  fromloc: string = "";
+  toloc: string = "";
+  date1: Date;
+  //input:Flight=new Flight(0,"","","",0,0,"");
+  constructor(private service: UserFlightService) { }
+  fetch(fromloc, toloc, date1) {
+    console.log(fromloc + toloc + date1);
+    this.service.getSearchFlights(fromloc, toloc, date1).subscribe(
+      response => this.handleSuccessfulResponse(response),
+    );
+  }
+  handleSuccessfulResponse(response) {
+    this.searchs = response;
+    console.log(this.searchs);
+  }
+  ngOnInit() {
+  }
 }
-  
+
+

@@ -8,7 +8,6 @@ import { Observable } from 'rxjs';
 })
 export class UserFlightService {
   
-users:Flight[]=[];
   constructor(private http:HttpClient) { 
   }
 
@@ -17,9 +16,9 @@ users:Flight[]=[];
     return this.http.post<Register>("http://localhost:9194/flights/RegPage",user,{responseType:'text' as 'json'});
   }
   
-  public getUsers(){
-
-    return this.http.get<Flight>("http://localhost:9193/flights/findAllflights");
+  public getSearchFlights(fromloc,toloc,date1){
+console.log(fromloc,toloc,date1)
+    return this.http.get<Flight>("http://localhost:9193/flights/SearchFlights/"+fromloc+"/"+toloc+"/"+date1,{responseType: 'json'});
   }
 
 }
@@ -42,14 +41,15 @@ export class Flight {
     toloc:String;
     seatCapacity:number;
     costPerSeat:number;
-  filter: any;
-    constructor(flightNumber:number,flightName:String,fromloc:String, toloc:String,seatCapacity:number, costPerSeat:number)
-    {
-      this.flightNumber=flightNumber;
+    date1:Date;
+     constructor(flightNumber:number,flightName:String,fromloc:String, toloc:String,seatCapacity:number, costPerSeat:number,date1:Date)
+     {
+       this.flightNumber=flightNumber;
       this.flightName=flightName;
-      this.fromloc=fromloc;
-      this.toloc=toloc;
-      this.seatCapacity=seatCapacity;
-      this.costPerSeat=costPerSeat;
-    }
+       this.fromloc=fromloc;
+       this.toloc=toloc;
+       this.seatCapacity=seatCapacity;
+       this.costPerSeat=costPerSeat;
+      this.date1=date1;
+     }
 }
