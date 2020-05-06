@@ -16,9 +16,9 @@ export class UserFlightService {
     return this.http.post<Register>("http://localhost:9194/flights/RegPage",user,{responseType:'text' as 'json'});
   }
   
-  public getSearchFlights(fromloc,toloc,date1){
-console.log(fromloc,toloc,date1)
-    return this.http.get<Flight>("http://localhost:9193/flights/SearchFlights/"+fromloc+"/"+toloc+"/"+date1,{responseType: 'json'});
+  public getSearchFlights(SearchFlight:Flight) {
+console.log(SearchFlight)
+    return this.http.get("http://localhost:9193/flights/SearchFlights/"+SearchFlight.fromloc+"/"+SearchFlight.toloc+"/"+SearchFlight.date1,{responseType: 'json'});
   }
 
 }
@@ -34,17 +34,16 @@ export class Register {
   
 }
 export class Flight {
- 
   flightNumber:number;
-    flightName:String;
-    fromloc:String;
-    toloc:String;
+    flightName:string;
+    fromloc:string;
+    toloc:string;
     seatCapacity:number;
     costPerSeat:number;
     date1:Date;
-     constructor(flightNumber:number,flightName:String,fromloc:String, toloc:String,seatCapacity:number, costPerSeat:number,date1:Date)
+    constructor(flightNumber:number,flightName:string,fromloc:string,toloc:string,seatCapacity:number,costPerSeat:number,date1:Date)
      {
-       this.flightNumber=flightNumber;
+      this.flightNumber=flightNumber;
       this.flightName=flightName;
        this.fromloc=fromloc;
        this.toloc=toloc;

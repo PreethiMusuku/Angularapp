@@ -1,4 +1,4 @@
-<html>
+
 <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -8,48 +8,57 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6">
-
-                <th>Source</th>
-                <input required type="text" #fromlocRef='ngModel' name="fromloc" [(ngModel)]="fromloc" ngModel
-                    class="form-control">
-                <th>Destination</th>
-                <input required type="text" #fromlocRef='ngModel' name="toloc" [(ngModel)]="toloc" ngModel
-                    class="form-control">
-                <th>Date</th>
-                <input required type="date" #dateRef='ngModel' name="date1" [(ngModel)]="date1" ngModel
-                    class="form-control">
-                <input type="submit" value="search" class="btn btn-success" (click)="fetch(fromloc,toloc,date1)">
-            </div>
+        <form #getsearch="ngForm" (ngSubmit)='Submit(getsearch.value)'>
+        <div class="form-group md-form form-lg ">
+            <div class="form-group">
+                <br>
+                    <label for="fromloc"><span class="req">* </span>Source</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                 <select type="text" id="ss" name="fromloc" placeholder="Enter source"ngModel>
+                 <option value="hyderabad">hyderabad</option>
+                 <option value="pune">pune</option>
+                 </select>
+                </div>
+                <div class="form-group">
+                    <label for="toloc"><span class="req">* </span>Destination</label>&nbsp;&nbsp;&nbsp;
+                  <select type="text" id="ss"name="toloc" placeholder="Enter Destination"ngModel>
+                    <option value="chennai">chennai</option>
+                    <option value="delhi">delhi</option>
+                    <option value="mumbai">mumbai</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="date1"><span class="req">* </span>Date</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="date" id="ss" name="date1" ngModel>
+                 </div>
+                    <button class="btn btn-success" [disabled]="getsearch.invalid">Search</button>
         </div>
-    </div>
-    <h2>Available flights</h2>
-    <div class="col-xs-2">
-        <table class="table table-hover">
+        </form>
+        </div>
+        </div>
+            <table class="table table-striped container" *ngIf="searchs&&searchs.length>0">
             <thead>
                 <tr>
-                    <th>flightNumber</th>
-                    <th>FlightName</th>
-                    <th>FromLocation</th>
-                    <th>ToLocation</th>
-                    <th>NoofSeats</th>
+                    <th>Flightnumber</th>
+                    <th>Flightname</th>
+                    <th>Fromlocation</th>
+                    <th>Tolocation</th>
+                    <th>Seat</th>
                     <th>Cost</th>
+                    <th>Date</th>
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let p of searchs">
-                    <td>{{p}}</td>
-                    <td>{{p.flightNumber}}</td>
-                    <td>{{p.flightNumber}}</td>
-                    <td>{{p.flightName}}</td>
-                    <td>{{p.fromloc}}</td>
-                    <td>{{p.toloc}}</td>
-                    <td>{{p.seatCapacity}}</td>
-                    <td>{{p.costPerSeat}}</td>
-                    <td>{{p.date1}}</td>
+                <tr *ngFor="let s of searchs">
+                    <td>{{s[0]}}</td>
+                    <td>{{s[1]}}</td>
+                    <td>{{s[2]}}</td>
+                    <td>{{s[3]}}</td>
+                    <td>{{s[4]}}</td>
+                    <td>{{s[5]}}</td>
+                    <td>{{s[6]}}</td>
                 </tr>
-
             </tbody>
         </table>
-    </div>
+</div>
 </body>
-</html>
+

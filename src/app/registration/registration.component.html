@@ -28,7 +28,7 @@
         
         <div class="form-group">
           <label for="password"><span class="req">* </span>Enter Password</label>
-          <input type="text" [(ngModel)]="user.password" placeholder="Enter Password" name="password" class="form-control" id="password" #password="ngModel" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
+          <input type="password" [(ngModel)]="user.password" placeholder="Enter Password" name="password" class="form-control" id="password" #password="ngModel" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
           <div *ngIf="password.errors && (password.dirty || password.touched)" class="alert alert-danger">
             <div *ngIf="password.errors.required">Password is required</div>
             <div *ngIf="password.errors.pattern"> Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters.</div>
@@ -38,7 +38,7 @@
         
         <div class="form-group">
             <label for="confirmpassword"><span class="req">* </span>Confirm Password</label>
-            <input type="text" [(ngModel)]="user.confirmpassword" placeholder="Enter Password" name="confirmpassword" class="form-control" id="confirmpassword" #confirmpassword="ngModel" pattern="{{ password.value }}" required>
+            <input type="password" [(ngModel)]="user.confirmpassword" placeholder="Enter Password" name="confirmpassword" class="form-control" id="confirmpassword" #confirmpassword="ngModel" pattern="{{ password.value }}" required>
             <div *ngIf="confirmpassword.errors && (confirmpassword.dirty || confirmpassword.touched)" class="alert alert-danger">
               <div *ngIf="confirmpassword.errors.required">Confirmation is required</div>
               <div *ngIf="confirmpassword.errors.pattern"> Password & Confirm Password does not match.</div>
