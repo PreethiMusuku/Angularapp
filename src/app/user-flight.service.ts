@@ -22,8 +22,6 @@ console.log(SearchFlight)
   }
 
 }
-
-
 export class Register {
   userid:number;
   username:string;
