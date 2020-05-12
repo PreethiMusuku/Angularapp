@@ -24,9 +24,6 @@ this.valid = this.validation(SearchFlight.fromloc,SearchFlight.toloc,SearchFligh
 if(this.valid)
     this.service.getSearchFlights(SearchFlight).subscribe(
       response => this.handleSuccessfulResponse(response),
-  
-    //   error=>{console.log("exception occured" );
-    // this.result="FlightNumber not exists";}
     );
 
   }
